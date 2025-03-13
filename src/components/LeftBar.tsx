@@ -13,7 +13,7 @@ const LeftBar: React.FC<SearchMod> = ({ setOpenSearch }) => {
 
     useEffect(() => {
         const fetchData = async () => {
-            const response = await axios.get<string>("http://localhost:3000/inbox");
+            const response = await axios.get<string>("https://todo-backend-b3ts.onrender.com/inbox");
             setTodoLength(response.data.length);
         };
         fetchData();

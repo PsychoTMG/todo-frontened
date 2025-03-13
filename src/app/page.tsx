@@ -14,7 +14,7 @@ const Home = () => {
 
   useEffect(() => {
     const fetch = async () => {
-      const responce = await axios.get<ApiResponce[]>('http://localhost:3000/todos');
+      const responce = await axios.get<ApiResponce[]>('https://todo-backend-b3ts.onrender.com/todos');
       setData(responce.data);
     };
 

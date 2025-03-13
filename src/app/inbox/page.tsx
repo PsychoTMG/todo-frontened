@@ -25,7 +25,7 @@ const Inbox = () => {
     // Получение данных
     useEffect(() => {
         const fetchData = async () => {
-            const res = await axios.get<ApiResponse[]>('http://localhost:3000/inbox')
+            const res = await axios.get<ApiResponse[]>('https://todo-backend-b3ts.onrender.com/inbox')
             setCurData(res.data)
         }
         fetchData()
@@ -34,7 +34,7 @@ const Inbox = () => {
     // Выполнение задачи
     const onComplete = async (id: number) => {
     
-        await axios.patch(`http://localhost:3000/completed/${id}`, { completed: true });
+        await axios.patch(`https://todo-backend-b3ts.onrender.com/completed/${id}`, { completed: true });
     
         const updatedData = curData.map(todo =>
             todo.id === id ? { ...todo, completed: true } : todo
@@ -47,7 +47,7 @@ const Inbox = () => {
     
     // Отмена выполнения
     const onCompleteFalse = async (id: number) => {
-        await axios.patch(`http://localhost:3000/completed/${id}`, { completed: false })
+        await axios.patch(`https://todo-backend-b3ts.onrender.com/completed/${id}`, { completed: false })
         const updatedData = curData.map(todo =>
             todo.id === id ? { ...todo, completed: false } : todo
         )

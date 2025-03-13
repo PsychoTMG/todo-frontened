@@ -32,21 +32,21 @@ const TodoCurrent = () => {
 
     useEffect(() => {
         const fetchTodo = async () => {
-            const response = await axios.get<ApiResponce>(`http://localhost:3000/inbox/${id}`);
+            const response = await axios.get<ApiResponce>(`https://todo-backend-b3ts.onrender.com/inbox/${id}`);
             setTodo(response.data);
         };
         fetchTodo();
     }, [id]);
 
     const deleteTodo = async (id: number) => {
-        await axios.delete(`http://localhost:3000/delete/${id}`);
+        await axios.delete(`https://todo-backend-b3ts.onrender.com/delete/${id}`);
         setTodo(null);
 
     };
 
     const updateTodo = async (e: React.FormEvent) => {
         e.preventDefault();
-        const response = await axios.patch<ApiResponce>(`http://localhost:3000/update/${id}`, {
+        const response = await axios.patch<ApiResponce>(`https://todo-backend-b3ts.onrender.com/update/${id}`, {
             title: updTitle,
             desc: updDesc,
         });

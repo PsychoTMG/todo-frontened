@@ -21,7 +21,7 @@ const Search = () => {
         const delayDebounce = setTimeout(async () => {
             setLoading(true)
             try {
-                const response = await axios.get<ApiResponse[]>(`http://localhost:3000/search?query=${search}`)
+                const response = await axios.get<ApiResponse[]>(`https://todo-backend-b3ts.onrender.com/search?query=${search}`)
                 setResData(response.data)
                 setLoading(false)
             } catch (error) {
