@@ -1,10 +1,20 @@
 // app/layout.tsx
-import { Head } from 'next/document'; // Импортируем компонент Head для правильного добавления в head
+import { Metadata } from 'next';
 import LeftBar from "@/components/LeftBar";
 import "./globals.css";
 import { useState } from "react";
 import Image from "next/image";
 import Search from "@/components/Search";
+
+export const metadata: Metadata = {
+  title: 'Your Site Title',
+  description: 'Your site description',
+  metadataBase: new URL('https://your-site-url.com'),
+  // Здесь добавляем метатег для Яндекса
+  verification: {
+    yandex: '1c9b9ab69c3b700e',
+  },
+};
 
 const RootLayout = ({ children }: { children: React.ReactNode }) => {
   const [leftBar, setLeftBar] = useState<boolean>(false);
@@ -12,12 +22,6 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
 
   return (
     <html lang="en">
-      <Head>
-        <meta name="yandex-verification" content="1c9b9ab69c3b700e" />
-        <meta charSet="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-      </Head>
-
       <body className="flex">
         <div
           className={`fixed top-0 left-0 h-full bg-[#fffbf7] w-[280px] transition-transform duration-300 ${leftBar ? "translate-x-0" : "-translate-x-full"}`}
