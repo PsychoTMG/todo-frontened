@@ -18,7 +18,7 @@ const Home = () => {
         <meta name="keywords" content="todo, список дел, задачи, управление временем" />
         <meta name="robots" content="index, follow" />
       </Head>
-      <div> Главная страница
+      <div> хуевая  страница
 
       </div></>
 
