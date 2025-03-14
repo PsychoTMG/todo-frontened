@@ -1,20 +1,14 @@
 // app/layout.tsx
+"use client"
 
-import { Metadata } from 'next';
 import LeftBar from "@/components/LeftBar";
 import "./globals.css";
 import { useState } from "react";
 import Image from "next/image";
 import Search from "@/components/Search";
-import Head from "next/head";  // Импортируем Head для метатегов
 
-// Обновленный объект metadata без yandex-verification
-export const metadata: Metadata = {
-  title: "Мой ToDo List",
-  description: "Управляй своими задачами легко!",
-  keywords: "todo, список дел, задачи, управление временем",
-  robots: "index, follow",
-};
+
+
 
 const RootLayout = ({ children }: { children: React.ReactNode }) => {
   const [leftBar, setLeftBar] = useState<boolean>(false);
