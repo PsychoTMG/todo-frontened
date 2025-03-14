@@ -9,13 +9,16 @@ import Search from "@/components/Search";
 
 const RootLayout = ({ children }: { children: React.ReactNode }) => {
   const [leftBar, setLeftBar] = useState<boolean>(false);
-  const [openSearh, setOpenSearch] = useState<boolean>(false);
+  const [openSearch, setOpenSearch] = useState<boolean>(false); // Исправил опечатку в переменной
 
   return (
     <html lang="en">
-      <head>
+      <Head>
         <meta name="yandex-verification" content="1c9b9ab69c3b700e" />
-      </head>
+        <title>Мой ToDo List</title> {/* Можно добавить заголовок страницы */}
+        <meta name="description" content="Управляй своими задачами легко!" />
+        <meta name="keywords" content="todo, список дел, задачи, управление временем" />
+      </Head>
       <body className="flex">
         {/* Боковая панель с анимацией */}
         <div
@@ -24,7 +27,7 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
           <LeftBar setOpenSearch={setOpenSearch} />
         </div>
 
-        {/* Одна кнопка, которая смещается */}
+        {/* Кнопка для управления боковой панелью */}
         <button
           onClick={() => setLeftBar((prev) => !prev)}
           className={`fixed top-7 left-5 text-white rounded transition-transform duration-300 ${leftBar ? "translate-x-[220px]" : "translate-x-0"}`}
@@ -38,7 +41,7 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
         <div
           className={`flex w-full h-screen justify-center pt-10 transition-all duration-300 ${leftBar ? "ml-[280px]" : "ml-0"}`}
         >
-          {openSearh && (
+          {openSearch && (
             <div className="flex top-0 left-0 fixed justify-center items-center w-full h-screen z-50 bg-[#e1e1e123]">
               <Search />
             </div>
