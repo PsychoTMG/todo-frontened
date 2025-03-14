@@ -1,24 +1,33 @@
-"use client";
-import Head from "next/head";
+// app/layout.tsx
 
+import { Metadata } from 'next';
 import LeftBar from "@/components/LeftBar";
 import "./globals.css";
 import { useState } from "react";
 import Image from "next/image";
 import Search from "@/components/Search";
+import Head from "next/head";  // Импортируем Head для метатегов
+
+// Обновленный объект metadata без yandex-verification
+export const metadata: Metadata = {
+  title: "Мой ToDo List",
+  description: "Управляй своими задачами легко!",
+  keywords: "todo, список дел, задачи, управление временем",
+  robots: "index, follow",
+};
 
 const RootLayout = ({ children }: { children: React.ReactNode }) => {
   const [leftBar, setLeftBar] = useState<boolean>(false);
-  const [openSearch, setOpenSearch] = useState<boolean>(false); // Исправил опечатку в переменной
+  const [openSearch, setOpenSearch] = useState<boolean>(false);
 
   return (
     <html lang="en">
-      <Head>
-        <meta name="yandex-verification" content="1c9b9ab69c3b700e" />
-        <title>Мой ToDo List</title> {/* Можно добавить заголовок страницы */}
-        <meta name="description" content="Управляй своими задачами легко!" />
-        <meta name="keywords" content="todo, список дел, задачи, управление временем" />
-      </Head>
+      <head>
+        {/* Здесь добавляем метатег для Яндекса */}
+        <Head>
+          <meta name="yandex-verification" content="1c9b9ab69c3b700e" />
+        </Head>
+      </head>
       <body className="flex">
         {/* Боковая панель с анимацией */}
         <div
@@ -27,7 +36,7 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
           <LeftBar setOpenSearch={setOpenSearch} />
         </div>
 
-        {/* Кнопка для управления боковой панелью */}
+        {/* Одна кнопка, которая смещается */}
         <button
           onClick={() => setLeftBar((prev) => !prev)}
           className={`fixed top-7 left-5 text-white rounded transition-transform duration-300 ${leftBar ? "translate-x-[220px]" : "translate-x-0"}`}
