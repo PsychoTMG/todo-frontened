@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://todo-frontened-psychotmgs-projects.vercel.app/sitemap.xml
