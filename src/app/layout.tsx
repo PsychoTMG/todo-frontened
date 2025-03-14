@@ -11,6 +11,9 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
 
   return (
     <html lang="en">
+      <head>
+        <meta name="yandex-verification" content="1c9b9ab69c3b700e" />
+      </head>
       <body className="flex">
         {/* Боковая панель с анимацией */}
         <div
@@ -47,7 +50,7 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
           {children}
         </div>
       </body>
-    </html>
+    </html >
   );
 };
 
