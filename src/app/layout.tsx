@@ -1,6 +1,5 @@
-"use client";
-import Head from "next/head";
-
+// app/layout.tsx
+import { Head } from 'next/document'; // Импортируем компонент Head для правильного добавления в head
 import LeftBar from "@/components/LeftBar";
 import "./globals.css";
 import { useState } from "react";
@@ -13,18 +12,19 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
 
   return (
     <html lang="en">
-      <head>
+      <Head>
         <meta name="yandex-verification" content="1c9b9ab69c3b700e" />
-      </head>
+        <meta charSet="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+      </Head>
+
       <body className="flex">
-        {/* Боковая панель с анимацией */}
         <div
           className={`fixed top-0 left-0 h-full bg-[#fffbf7] w-[280px] transition-transform duration-300 ${leftBar ? "translate-x-0" : "-translate-x-full"}`}
         >
           <LeftBar setOpenSearch={setOpenSearch} />
         </div>
 
-        {/* Одна кнопка, которая смещается */}
         <button
           onClick={() => setLeftBar((prev) => !prev)}
           className={`fixed top-7 left-5 text-white rounded transition-transform duration-300 ${leftBar ? "translate-x-[220px]" : "translate-x-0"}`}
@@ -34,7 +34,6 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
           </div>
         </button>
 
-        {/* Основной контент */}
         <div
           className={`flex w-full h-screen justify-center pt-10 transition-all duration-300 ${leftBar ? "ml-[280px]" : "ml-0"}`}
         >
