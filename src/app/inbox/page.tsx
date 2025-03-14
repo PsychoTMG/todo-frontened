@@ -46,13 +46,13 @@ const Inbox = () => {
 
     
     // Отмена выполнения
-    const onCompleteFalse = async (id: number) => {
-        await axios.patch(`https://todo-backend-b3ts.onrender.com/completed/${id}`, { completed: false })
-        const updatedData = curData.map(todo =>
-            todo.id === id ? { ...todo, completed: false } : todo
-        )
-        setCurData(updatedData)
-    }
+    // const onCompleteFalse = async (id: number) => {
+    //     await axios.patch(`https://todo-backend-b3ts.onrender.com/completed/${id}`, { completed: false })
+    //     const updatedData = curData.map(todo =>
+    //         todo.id === id ? { ...todo, completed: false } : todo
+    //     )
+    //     setCurData(updatedData)
+    // }
 
     // Drag & Drop
     const onDragStart = (index: number) => setDragIndex(index)
@@ -125,7 +125,7 @@ const Inbox = () => {
 
             {/* Выполненные задачи */}
             <div className='flex flex-col gap-[20px]'>
-                {curData.filter(item => item.completed).map((item, index) => (
+                {curData.filter(item => item.completed).map((item) => (
                     <div
                         key={item.id}
                         className='flex gap-[10px] relative p-[10px] border-b-[1px] border-[#e9e9e9] w-[750px]'>
