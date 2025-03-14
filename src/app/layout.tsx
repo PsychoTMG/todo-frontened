@@ -12,10 +12,12 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
   const [openSearh, setOpenSearch] = useState<boolean>(false);
 
   return (
-    <>
-      <Head>
-        <meta name="yandex-verification" content="1c9b9ab69c3b700e" />
-      </Head>
+    <html lang="en">
+
+        <Head>
+          <meta name="yandex-verification" content="1c9b9ab69c3b700e" />
+        </Head>
+
       <body className="flex">
         {/* Боковая панель с анимацией */}
         <div
@@ -52,7 +54,7 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
           {children}
         </div>
       </body>
-    </>
+    </html >
   );
 };
 
