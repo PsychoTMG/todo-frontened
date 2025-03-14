@@ -24,9 +24,7 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
     <html lang="en">
       <head>
         {/* Здесь добавляем метатег для Яндекса */}
-        <Head>
           <meta name="yandex-verification" content="1c9b9ab69c3b700e" />
-        </Head>
       </head>
       <body className="flex">
         {/* Боковая панель с анимацией */}
