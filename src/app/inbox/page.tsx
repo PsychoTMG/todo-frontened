@@ -25,7 +25,7 @@ const Inbox = () => {
     // Получение данных
     useEffect(() => {
         const fetchData = async () => {
-            const res = await axios.get<ApiResponse[]>('https://todo-backend-b3ts.onrender.com/inbox')
+            const res = await axios.get<ApiResponse[]>('http://localhost:3001/inbox')
             setCurData(res.data)
         }
         fetchData()
@@ -33,18 +33,18 @@ const Inbox = () => {
 
     // Выполнение задачи
     const onComplete = async (id: number) => {
-    
-        await axios.patch(`https://todo-backend-b3ts.onrender.com/completed/${id}`, { completed: true });
-    
+
+        await axios.patch(`http://localhost:3001/completed/${id}`, { completed: true });
+
         const updatedData = curData.map(todo =>
             todo.id === id ? { ...todo, completed: true } : todo
         );
         setCurData(updatedData);
-    
-    
+
+
     };
 
-    
+
     // Отмена выполнения
     // const onCompleteFalse = async (id: number) => {
     //     await axios.patch(`https://todo-backend-b3ts.onrender.com/completed/${id}`, { completed: false })
@@ -69,7 +69,7 @@ const Inbox = () => {
 
     return (
         <div className='flex flex-col gap-[20px] relative'>
-            <h1 className='font-bold text-[34px]'>Входящие</h1>
+            <h1 className='font-[600] text-[26px]'>Входящие</h1>
 
             {/* Активные задачи */}
             <div className='flex flex-col gap-[20px] '>
@@ -87,16 +87,16 @@ const Inbox = () => {
                     >
                         {/* Круглая кнопка завершения */}
                         <div
-                            className='w-[20px] h-[20px] border-1 rounded-full cursor-pointer transition'
+                            className='w-[20px] h-[20px] border-1 border-[#999] rounded-full cursor-pointer '
                             onClick={() => onComplete(item.id)}
                         ></div>
 
                         {/* Ссылка на страницу задачи */}
                         <Link href={`/inbox/${item.id}`}>
-                            <h1 className='flex font-bold text-[14px]'>
-                                <p>{index + 1}.</p> {item.title}
+                            <h1 className='flex  text-[14px]'>
+                                {item.title}
                             </h1>
-                            <h2 className='text-[12px]'>{item.desc}</h2>
+                            <h2 className='text-[12px] text-[#666]'>{item.desc}</h2>
                         </Link>
 
                         {/* Кнопка редактирования */}
@@ -111,7 +111,7 @@ const Inbox = () => {
                                 />
                             </Link>
                         </div>
-                        
+
                     </div>
                 ))}
             </div>
@@ -129,11 +129,11 @@ const Inbox = () => {
                     <div
                         key={item.id}
                         className='flex gap-[10px] relative p-[10px] border-b-[1px] border-[#e9e9e9] w-[750px]'>
-                        <div className='w-[20px] h-[20px] border-1 rounded-full bg-[#d9d9d9]'></div>
+                        <div className='w-[20px] h-[20px] rounded-full bg-[#d9d9d9]'></div>
 
                         {/* Ссылка на страницу задачи */}
                         <Link href={`/inbox/${item.id}`}>
-                            <h1 className='flex font-bold text-[14px]'>
+                            <h1 className='flex text-[14px]'>
                                 <del> {item.title}</del>
                             </h1>
                             <h2 className='text-[12px]'>{item.desc}</h2>

@@ -15,7 +15,7 @@ const AddTodo: React.FC<AddTodoProps> = ({ setOpenAdd }) => {
 
     const submitForm = async (e: React.FormEvent) => {
         e.preventDefault()
-        await axios.post('https://todo-backend-b3ts.onrender.com/addTodo', { title, desc, date })
+        await axios.post('http://localhost:3001/addTodo', { title, desc, date })
         setTitle('')
         setDesc('')
         setDate('')

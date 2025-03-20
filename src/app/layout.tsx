@@ -23,7 +23,7 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
       <body className="flex">
         {/* Боковая панель с анимацией */}
         <div
-          className={`fixed top-0 left-0 h-full bg-[#fffbf7] w-[280px] transition-transform duration-300 ${leftBar ? "translate-x-0" : "-translate-x-full"}`}
+          className={`fixed top-0 left-0 h-full bg-[#ff0000] w-[280px] transition-transform duration-300 ${leftBar ? "translate-x-0" : "-translate-x-full"}`}
         >
           <LeftBar setOpenSearch={setOpenSearch} />
         </div>
@@ -40,11 +40,11 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
 
         {/* Основной контент */}
         <div
-          className={`flex w-full h-screen justify-center pt-10 transition-all duration-300 ${leftBar ? "ml-[280px]" : "ml-0"}`}
+          className={`flex w-full h-screen justify-center pt-[60px] transition-all duration-300 ${leftBar ? "ml-[280px]" : "ml-0"}`}
         >
           {openSearch && (
             <div className="flex top-0 left-0 fixed justify-center items-center w-full h-screen z-50 bg-[#e1e1e123]">
-              <Search />
+              <Search setOpenSearch={setOpenSearch}/>
             </div>
           )}
           {children}

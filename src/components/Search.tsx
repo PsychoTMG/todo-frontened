@@ -2,11 +2,18 @@ import axios from 'axios'
 import Image from 'next/image'
 import React, { useEffect, useState } from 'react'
 
-const Search = () => {
-    interface ApiResponse {
-        title: string,
-        desc: string
-    }
+interface ApiResponse {
+    title: string,
+    desc: string
+}
+
+interface ModuleSearch {
+    setOpenSearch: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+const Search: React.FC<ModuleSearch> = ({ setOpenSearch }) => {
+
+
 
     const [search, setSearch] = useState<string>('')
     const [resData, setResData] = useState<ApiResponse[]>([])
@@ -21,7 +28,7 @@ const Search = () => {
         const delayDebounce = setTimeout(async () => {
             setLoading(true)
             try {
-                const response = await axios.get<ApiResponse[]>(`https://todo-backend-b3ts.onrender.com/search?query=${search}`)
+                const response = await axios.get<ApiResponse[]>(`http://localhost:3001/search?query=${search}`)
                 setResData(response.data)
                 setLoading(false)
             } catch (error) {
@@ -45,12 +52,19 @@ const Search = () => {
                 </div>
                 <input
                     type="text"
-                    placeholder="Введите запрос..."
+                    placeholder="Введите запрос или команду..."
                     onChange={(e) => setSearch(e.target.value)}
                     value={search}
                     className=" rounded outline-none w-full"
                 />
-
+                <Image
+                    className='cursor-pointer'
+                    onClick={() => setOpenSearch(false)}
+                    src='/close.svg'
+                    width={30}
+                    height={30}
+                    alt='закрыть'
+                />
             </div>
             <div className="mt-4">
                 {!loading ? resData.map((item, index) => (
