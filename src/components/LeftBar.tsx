@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 interface SearchMod {
     setOpenSearch: (value: boolean) => void;
 }
-const API_URL = process.env.NEXT_PUBLIC_API_URL;
+const API_URL = process.env.NEXT_PUBLIC_API_URL|| 'http://localhost:3001';
 
 const LeftBar: React.FC<SearchMod> = ({ setOpenSearch }) => {
     const [todoLength, setTodoLength] = useState<number>(0);

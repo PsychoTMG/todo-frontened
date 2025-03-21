@@ -12,7 +12,7 @@ interface ApiResponce {
     createdAt: string,
     date: string
 }
-const API_URL = process.env.NEXT_PUBLIC_API_URL;
+const API_URL = process.env.NEXT_PUBLIC_API_URL|| 'http://localhost:3001';
 
 const TodoCurrent = () => {
     const params = useParams<{ id: string }>();

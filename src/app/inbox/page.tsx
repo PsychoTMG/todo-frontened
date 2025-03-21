@@ -12,7 +12,9 @@ interface ApiResponse {
     id: number
     completed: boolean
 }
-const API_URL = process.env.NEXT_PUBLIC_API_URL;
+const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001';
+
+
 
 const Inbox = () => {
     const [curData, setCurData] = useState<ApiResponse[]>([])
@@ -25,11 +27,15 @@ const Inbox = () => {
 
     // Получение данных
     useEffect(() => {
+
         const fetchData = async () => {
+            console.log('API_URL:', API_URL);
+            console.log('Запрос:', `${API_URL}/addTodo`);
             const res = await axios.get<ApiResponse[]>(`${API_URL}/inbox`)
             setCurData(res.data)
         }
         fetchData()
+
     }, [])
 
     // Выполнение задачи

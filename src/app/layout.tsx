@@ -3,7 +3,7 @@
 
 import LeftBar from "@/components/LeftBar";
 import "./globals.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import Search from "@/components/Search";
 
@@ -14,6 +14,9 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
   const [leftBar, setLeftBar] = useState<boolean>(false);
   const [openSearch, setOpenSearch] = useState<boolean>(false);
 
+  useEffect(() => {
+    console.log("NEXT_PUBLIC_API_URL:", process.env.NEXT_PUBLIC_API_URL);
+  }, []);
   return (
     <html lang="en">
       <head>
