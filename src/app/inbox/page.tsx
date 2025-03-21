@@ -27,7 +27,8 @@ const Inbox = () => {
 
     // Получение данных
     useEffect(() => {
-
+        console.log("API_URL:", API_URL);
+        console.log("Полный URL запроса:", `${API_URL}/inbox`);
         const fetchData = async () => {
             console.log('API_URL:', API_URL);
             console.log('Запрос:', `${API_URL}/addTodo`);
