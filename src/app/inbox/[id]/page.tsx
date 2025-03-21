@@ -12,6 +12,7 @@ interface ApiResponce {
     createdAt: string,
     date: string
 }
+const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
 const TodoCurrent = () => {
     const params = useParams<{ id: string }>();
@@ -32,21 +33,21 @@ const TodoCurrent = () => {
 
     useEffect(() => {
         const fetchTodo = async () => {
-            const response = await axios.get<ApiResponce>(`http://localhost:3001/inbox/${id}`);
+            const response = await axios.get<ApiResponce>(`${API_URL}/inbox/${id}`);
             setTodo(response.data);
         };
         fetchTodo();
     }, [id]);
 
     const deleteTodo = async (id: number) => {
-        await axios.delete(`http://localhost:3001/delete/${id}`);
+        await axios.delete(`${API_URL}/delete/${id}`);
         setTodo(null);
 
     };
 
     const updateTodo = async (e: React.FormEvent) => {
         e.preventDefault();
-        const response = await axios.patch<ApiResponce>(`http://localhost:3001/update/${id}`, {
+        const response = await axios.patch<ApiResponce>(`${API_URL}/update/${id}`, {
             title: updTitle,
             desc: updDesc,
         });

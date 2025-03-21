@@ -7,13 +7,14 @@ import { useEffect, useState } from "react";
 interface SearchMod {
     setOpenSearch: (value: boolean) => void;
 }
+const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
 const LeftBar: React.FC<SearchMod> = ({ setOpenSearch }) => {
     const [todoLength, setTodoLength] = useState<number>(0);
 
     useEffect(() => {
         const fetchData = async () => {
-            const response = await axios.get<string>("http://localhost:3001/inbox");
+            const response = await axios.get<string>(`${API_URL}/inbox`);
             setTodoLength(response.data.length);
         };
         fetchData();

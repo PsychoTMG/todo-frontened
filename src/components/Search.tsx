@@ -12,6 +12,7 @@ interface ModuleSearch {
 }
 
 const Search: React.FC<ModuleSearch> = ({ setOpenSearch }) => {
+    const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
 
 
@@ -28,7 +29,7 @@ const Search: React.FC<ModuleSearch> = ({ setOpenSearch }) => {
         const delayDebounce = setTimeout(async () => {
             setLoading(true)
             try {
-                const response = await axios.get<ApiResponse[]>(`http://localhost:3001/search?query=${search}`)
+                const response = await axios.get<ApiResponse[]>(`${API_URL}/search?query=${search}`)
                 setResData(response.data)
                 setLoading(false)
             } catch (error) {

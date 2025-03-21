@@ -12,6 +12,7 @@ interface ApiResponse {
     id: number
     completed: boolean
 }
+const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
 const Inbox = () => {
     const [curData, setCurData] = useState<ApiResponse[]>([])
@@ -25,7 +26,7 @@ const Inbox = () => {
     // Получение данных
     useEffect(() => {
         const fetchData = async () => {
-            const res = await axios.get<ApiResponse[]>('http://localhost:3001/inbox')
+            const res = await axios.get<ApiResponse[]>(`${API_URL}/inbox`)
             setCurData(res.data)
         }
         fetchData()
@@ -34,7 +35,7 @@ const Inbox = () => {
     // Выполнение задачи
     const onComplete = async (id: number) => {
 
-        await axios.patch(`http://localhost:3001/completed/${id}`, { completed: true });
+        await axios.patch(`${API_URL}/completed/${id}`, { completed: true });
 
         const updatedData = curData.map(todo =>
             todo.id === id ? { ...todo, completed: true } : todo

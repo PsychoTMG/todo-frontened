@@ -5,6 +5,7 @@ import { useState } from "react"
 interface AddTodoProps {
     setOpenAdd: React.Dispatch<React.SetStateAction<boolean>>;
 }
+const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
 const AddTodo: React.FC<AddTodoProps> = ({ setOpenAdd }) => {
     const [title, setTitle] = useState<string>('')
@@ -15,7 +16,7 @@ const AddTodo: React.FC<AddTodoProps> = ({ setOpenAdd }) => {
 
     const submitForm = async (e: React.FormEvent) => {
         e.preventDefault()
-        await axios.post('http://localhost:3001/addTodo', { title, desc, date })
+        await axios.post(`h${API_URL}/addTodo`, { title, desc, date })
         setTitle('')
         setDesc('')
         setDate('')
