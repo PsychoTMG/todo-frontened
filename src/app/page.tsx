@@ -26,6 +26,7 @@ export default function Home() {
   }, [])
   return (
     <div className="flex justify-center w-[280px]">
+      <div>{process.env.NEXT_PUBLIC_API_URL}</div>
       <div className="flex flex-col">
         <div className="flex h-[52px]"> <Link href='inbox' className="text-[26px] font-bold">Входящие</Link></div>
         {date && Array.isArray(date) ? date.map(item =>
