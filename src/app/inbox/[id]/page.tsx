@@ -1,9 +1,16 @@
+
 import React from 'react'
 
-const page = () => {
+interface Props {
+  params: {
+    id: string
+  }
+}
+const Page = ({ params }: Props) => {
+  const id = params.id;
   return (
-    <div>page</div>
+    <div>{id}</div>
   )
 }
 
-export default page
+export default Page
